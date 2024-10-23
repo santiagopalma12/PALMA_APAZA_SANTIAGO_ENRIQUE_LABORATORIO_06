@@ -2,7 +2,7 @@ package labFP2;
 
 import java.util.ArrayList;
 
-public class VideoJuego3 {
+public class VideoJuego2 {
     public static void main(String[] args) {
         Soldado[][] tablero = new Soldado[10][10];
         ArrayList<Soldado> soldados = new ArrayList<>();
@@ -24,6 +24,8 @@ public class VideoJuego3 {
         }
 
         mostrar(tablero);
+        soldadoMayorVida(soldados);
+        mostrarDatosEjercito(soldados, vidaTotal);
     }
 
     public static boolean verificar(Soldado[][] tablero, Soldado soldado) {
@@ -41,5 +43,21 @@ public class VideoJuego3 {
             }
             System.out.println();
         }
+    }
+
+    public static void soldadoMayorVida(ArrayList<Soldado> soldados) {
+        Soldado soldadoMayor = soldados.get(0);
+        for (Soldado soldado : soldados) {
+            if (soldado.getNivelVida() > soldadoMayor.getNivelVida()) {
+                soldadoMayor = soldado;
+            }
+        }
+        System.out.println("Soldado con mayor nivel de vida: " + soldadoMayor.getNombre() + 
+                           " (Vida: " + soldadoMayor.getNivelVida() + ")");
+    }
+
+    public static void mostrarDatosEjercito(ArrayList<Soldado> soldados, int vidaTotal) {
+        System.out.println("Vida total del ejército: " + vidaTotal);
+        System.out.println("Promedio de vida del ejército: " + (vidaTotal / soldados.size()));
     }
 }
